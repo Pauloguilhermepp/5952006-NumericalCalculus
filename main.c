@@ -14,6 +14,8 @@ void bissectionMethod(double* lower, double* upper,
         if (func(*lower) * func(x) < 0) *upper = x;
         else *lower = x;
     }
+
+    printf("Number of iterations: %d\n", maxNumberofIterations);
 }
 
 double secantsMethod(double lower, double upper, double epsilon, 
@@ -28,8 +30,10 @@ double secantsMethod(double lower, double upper, double epsilon,
         double fx1 = func(x1);
 
         // Stop if aproximate relative error is acceptable, or f(x) is close enough:
-        if (fabs(x0 - x1)/fabs(x1) < epsilon || fabs(fx1) < epsilon) return x1;
-
+        if (fabs(x0 - x1)/fabs(x1) < epsilon || fabs(fx1) < epsilon){
+            printf("Number of iterations: %d\n", i);
+            return x1;
+        }
         aux = x1;
         // New x is the insersection between the line that passes through 
         // x0 and x1, and the horizontal axis:
@@ -54,8 +58,10 @@ double regulaFalsiMethod(double lower, double upper, double epsilon,
         x2 = (lower*fUpper - upper*fLower) / (fUpper - fLower);
         double fx2 = func(x2);
 
-        if (fabs(lower - x2)/fabs(x2) < epsilon || fabs(upper - x2)/fabs(x2) < epsilon) 
+        if (fabs(lower - x2)/fabs(x2) < epsilon || fabs(upper - x2)/fabs(x2) < epsilon){
+            printf("Number of iterations: %d\n", i);
             return x2;
+        }
 
         // Divide interval at the intersection with the secant line:
         if (fx2 * fLower < 0)  { 
