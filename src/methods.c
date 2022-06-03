@@ -21,6 +21,8 @@ void bissectionMethod(double* lower, double* upper, double epsilon, double(*func
             *lower = x;
         }
     }
+    
+    printf("Number of iterations: %d\n", maxNumIt);
 }
 
 double secantsMethod(double lower, double upper, double epsilon, int nMaxIt, double(*func)(double), int* flag)
@@ -38,6 +40,7 @@ double secantsMethod(double lower, double upper, double epsilon, int nMaxIt, dou
         double fx1 = func(x1);
         if (fabs(x0 - x1)/fabs(x1) < epsilon)
         {
+            printf("Number of iterations: %d\n", i);
             return x1;
         }
 
@@ -68,6 +71,7 @@ double regulaFalsiMethod(double lower, double upper, double epsilon, int nMaxIt,
 
         if (fabs(lower - x2)/fabs(x2) < epsilon || fabs(upper - x2)/fabs(x2) < epsilon)
         {
+            printf("Number of iterations: %d\n", i+1);
             return x2;
         }
 
